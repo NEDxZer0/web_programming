@@ -1,0 +1,130 @@
+header{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header a{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+}
+
+header a:hover{
+    text-decoration: none;
+}
+
+h1, h2, p{
+    text-align: center;
+}
+
+div.main-catalog{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.promo-catalog{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.main-catalog div.item{
+    margin: 12px;
+    width: auto;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.promo-catalog div.item{
+    margin: 12px;
+    width: 40%;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.main-catalog div.item p{
+    font-size: 30px;
+    margin: 0px;
+}
+
+div.promo-catalog div.item p{
+    font-size: 20px;
+    margin: 0px;
+}
+
+div.main-catalog div.item img{
+    align-self: center;
+} 
+
+div.main-catalog div.item img:hover{
+    opacity: 70%;
+} 
+
+@media screen and (min-width: 100px) {
+    div.main-catalog div.item img{
+        width: 100%;
+    } 
+    div.promo-catalog div.item img{
+        width: 100%;
+    }
+    div.main-catalog div.item{
+        width: 100%;
+    }
+    header img{
+        vertical-align:middle;
+        width: 40%;
+        margin: 12px;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    div.main-catalog div.item img{
+        width: auto;
+    } 
+    div.main-catalog div.item{
+        width: fit-content;
+    }
+
+    header img{
+        vertical-align: middle;
+        width: 250px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    html{
+        margin: 40px;
+    }
+    header{
+        height: fit-content;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    header img{
+        height: 250px;
+        width: 250px;
+        margin: 0;
+        margin-right: 50%;
+    }
+    div.main-catalog div.item{
+        width: 25%;
+        margin: 24px;
+    }
+    div.main-catalog div.item img{
+        width: 100%;
+    } 
+    div.promo-catalog div.item{
+        width: 18%;
+        margin: 20px;
+    }
+    div.promo-catalog div.item img{
+        width: 100%;
+    } 
+}
