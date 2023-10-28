@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset ="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>JS</title>
+</head>
+<body>
+<script>
+
+	let apple = 10;
+	alert(apple);
+	console.log(apple);
+
+	let condition = 'aboba';
+	console.log('Good game is ' + condition);
+
+	let fire = 667;
+	let water = '100';
+	let earth = false;
+	
+	console.log(fire + ' ' + water);
+	console.log(fire + ' ' + earth);
+	console.log(water + ' ' + fire);
+	console.log(water + ' ' + earth);
+	console.log(earth + ' ' + fire);
+	console.log(earth + ' ' + water);
+
+	let trees = new Array(10);
+
+	for (let i = 0; i < 10; i++)
+	{
+		trees[i] = Math.floor(Math.random() * 10) - 5;
+		
+	} 
+	
+	console.log("Array \"Trees\": [" + trees + "]");
+
+	trees = trees.filter(x => x >= 0);
+		
+	console.log("Filtered Array \"Trees\" : [" + trees + "]");
+
+	function randomInteger(min, max) {
+		let rand = min + Math.random() * (max + 1 - min);
+		return Math.floor(rand);
+	}
+
+	console.log("Func rand 1: " + randomInteger(1, 100));
+	console.log("Func rand 2: " + randomInteger(100, 10000));
+ 	console.log("Func rand 2: " + randomInteger(10000, 1000000));
+
+	function multArray(array, number) {
+		for( let i = 0; i < array.length; i ++)
+		{
+			array[i] = array[i] * number;
+		}
+	}
+
+	multArray(trees, 5);
+	console.log("Multiplied Array \"Trees\" : [" + trees + "]");
+
+	let anonim = () => {
+		let abc = 'qwertyuiopasdfghjklzxcvbnm';
+		let temp = '';
+		for ( let i = 0; i < randomInteger(2,6); i++)
+		{
+			temp += abc[randomInteger(1,26)];		
+		} 	
+		console.log(temp);
+	}
+	
+	anonim();
+
+	let myObject = {
+		firstName: 'Denis',
+		surname: 'Shabunin',
+		patronymic: 'Ilich',
+		birthday: '13.11.2003',
+		hobby: 'games',
+		group: 'AIB-3-043',
+		FIO : function () {
+			console.log(this.firstName + ' ' + this.surname + ' ' + this.patronymic + ' ' + this.birthday + ' ' + this.hobby + ' ' + this.group);
+			alert(this.firstName + ' ' + this.surname + ' ' + this.patronymic + ' ' + this.birthday + ' ' + this.hobby + ' ' + this.group);
+		}
+	}
+
+	myObject.FIO();
+
+	let employees = {
+		'Иванов': 30000,
+		'Петров': 23000,
+		'Смирнов': 54000,
+		'Соколов': 26000,
+		'Рогов': 61000,
+		'Рогов': 47000,
+		'Титов': 32000,
+		'Морозов': 12000,
+		'Быков': 98000,
+		'Зыков': 123000,
+	}
+
+	let sumSalary = 0;
+
+	for (let salary in employees)
+	{
+		sumSalary += employees[salary];
+	}
+
+	console.log(sumSalary);
+
+</script>
+</body>
+</html>
