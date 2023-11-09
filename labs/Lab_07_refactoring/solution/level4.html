@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset = "UTF-8"/>
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1.0"/>
+	<title>JS</title>
+</head>
+<body>
+<script>
+	var klassSoStudentami = [ {FIO: 'Petrov A.A.', Ocenka: 5},
+    		{FIO: 'Ivanov B.B.', Ocenka: 3.4}, {FIO: 'Sidorov G.G.', Ocenka: 9},
+    		{FIO: 'Nemolodoi D.D.', Ocenka: 2}, {FIO: 'Molodoi E.E.', Ocenka: 3.4} ];
+
+	var s = 0;
+	var kolichectvo = 0;
+	var ploxieStudenti = [];
+
+	for (var PoryadkoviyNomer =0; PoryadkoviyNomer < klassSoStudentami.length; PoryadkoviyNomer++)
+	{
+		if (klassSoStudentami[PoryadkoviyNomer].Ocenka > 5) {
+			console.log('This number is not going to be count, it doesn\'t match allowed values');
+		}
+
+		if (klassSoStudentami[PoryadkoviyNomer].Ocenka < 0) {
+			console.log('This number is not going to be count, it doesn\'t match allowed values');
+		}
+
+		if ( !( (klassSoStudentami[PoryadkoviyNomer].Ocenka <= 5) && 
+			(klassSoStudentami[PoryadkoviyNomer].Ocenka >= 0) ) ) continue;
+
+		if (klassSoStudentami[PoryadkoviyNomer].Ocenka < 4) { 
+			ploxieStudenti.push(klassSoStudentami[PoryadkoviyNomer])
+		}
+	
+		s = s + klassSoStudentami[PoryadkoviyNomer].Ocenka;
+		kolichectvo = kolichectvo + 1;
+	}
+	
+	s = s / kolichectvo;
+	console.log('Average grades: ' + s);
+	console.log('Bad students: ');
+	if (ploxieStudenti.length === 0) console.log('Таких нет');
+	
+	ploxieStudenti.forEach( (znachenie) => {
+		console.log('\tFio: '+ znachenie.FIO + '; Grade: '+ znachenie.Ocenka);
+	});
+</script>
+</body>
+</html>
