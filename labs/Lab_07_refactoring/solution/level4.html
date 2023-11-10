@@ -7,42 +7,42 @@
 </head>
 <body>
 <script>
-	var klassSoStudentami = [ {FIO: 'Petrov A.A.', Ocenka: 5},
-    		{FIO: 'Ivanov B.B.', Ocenka: 3.4}, {FIO: 'Sidorov G.G.', Ocenka: 9},
-    		{FIO: 'Nemolodoi D.D.', Ocenka: 2}, {FIO: 'Molodoi E.E.', Ocenka: 3.4} ];
+	let studentsClass = [ {FIO: 'Petrov A.A.', grade: 5},
+    		{FIO: 'Ivanov B.B.', grade: 3.4}, {FIO: 'Sidorov G.G.', grade: 9},
+    		{FIO: 'Nemolodoi D.D.', grade: 2}, {FIO: 'Molodoi E.E.', grade: 3.4} ];
 
-	var s = 0;
-	var kolichectvo = 0;
-	var ploxieStudenti = [];
+	var averageGrade = 0;
+	var studentsNumber = 0;
+	var badStudents = [];
 
-	for (var PoryadkoviyNomer =0; PoryadkoviyNomer < klassSoStudentami.length; PoryadkoviyNomer++)
+	for (var PoryadkoviyNomer = 0; PoryadkoviyNomer < studentsClass.length; PoryadkoviyNomer++)
 	{
-		if (klassSoStudentami[PoryadkoviyNomer].Ocenka > 5) {
+		if (studentsClass[PoryadkoviyNomer].grade > 5) {
 			console.log('This number is not going to be count, it doesn\'t match allowed values');
 		}
 
-		if (klassSoStudentami[PoryadkoviyNomer].Ocenka < 0) {
+		if (studentsClass[PoryadkoviyNomer].grade < 0) {
 			console.log('This number is not going to be count, it doesn\'t match allowed values');
 		}
 
-		if ( !( (klassSoStudentami[PoryadkoviyNomer].Ocenka <= 5) && 
-			(klassSoStudentami[PoryadkoviyNomer].Ocenka >= 0) ) ) continue;
+		if ( !( (studentsClass[PoryadkoviyNomer].grade <= 5) && 
+			(studentsClass[PoryadkoviyNomer].grade >= 0) ) ) continue;
 
-		if (klassSoStudentami[PoryadkoviyNomer].Ocenka < 4) { 
-			ploxieStudenti.push(klassSoStudentami[PoryadkoviyNomer])
+		if (studentsClass[PoryadkoviyNomer].grade < 4) { 
+			badStudents.push(studentsClass[PoryadkoviyNomer])
 		}
 	
-		s = s + klassSoStudentami[PoryadkoviyNomer].Ocenka;
-		kolichectvo = kolichectvo + 1;
+		averageGrade = averageGrade + studentsClass[PoryadkoviyNomer].grade;
+		studentsNumber = studentsNumber + 1;
 	}
 	
-	s = s / kolichectvo;
-	console.log('Average grades: ' + s);
+	averageGrade = averageGrade / studentsNumber;
+	console.log('Average grades: ' + averageGrade);
 	console.log('Bad students: ');
-	if (ploxieStudenti.length === 0) console.log('Таких нет');
+	if (badStudents.length === 0) console.log('Таких нет');
 	
-	ploxieStudenti.forEach( (znachenie) => {
-		console.log('\tFio: '+ znachenie.FIO + '; Grade: '+ znachenie.Ocenka);
+	badStudents.forEach( (znachenie) => {
+		console.log('\tFio: '+ znachenie.FIO + '; Grade: '+ znachenie.grade);
 	});
 </script>
 </body>
