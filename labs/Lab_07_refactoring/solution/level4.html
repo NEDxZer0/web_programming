@@ -11,6 +11,7 @@
     		{FIO: 'Ivanov B.B.', grade: 3.4}, {FIO: 'Sidorov G.G.', grade: 9},
     		{FIO: 'Nemolodoi D.D.', grade: 2}, {FIO: 'Molodoi E.E.', grade: 3.4} ];
 
+<<<<<<< HEAD
 	let averageGrade = 0;
 	let studentsNumber = 0;
 	let badStudents = [];
@@ -33,6 +34,30 @@
 		}
 	
 		averageGrade = averageGrade + studentsClass[currentStudentIndex].grade;
+=======
+	var averageGrade = 0;
+	var studentsNumber = 0;
+	var badStudents = [];
+
+	for (var PoryadkoviyNomer = 0; PoryadkoviyNomer < studentsClass.length; PoryadkoviyNomer++)
+	{
+		if (studentsClass[PoryadkoviyNomer].grade > 5) {
+			console.log('This number is not going to be count, it doesn\'t match allowed values');
+		}
+
+		if (studentsClass[PoryadkoviyNomer].grade < 0) {
+			console.log('This number is not going to be count, it doesn\'t match allowed values');
+		}
+
+		if ( !( (studentsClass[PoryadkoviyNomer].grade <= 5) && 
+			(studentsClass[PoryadkoviyNomer].grade >= 0) ) ) continue;
+
+		if (studentsClass[PoryadkoviyNomer].grade < 4) { 
+			badStudents.push(studentsClass[PoryadkoviyNomer])
+		}
+	
+		averageGrade = averageGrade + studentsClass[PoryadkoviyNomer].grade;
+>>>>>>> 53f305ef0f03d61bb5e3e3cf578a2e594f90feee
 		studentsNumber = studentsNumber + 1;
 	}
 	
@@ -41,8 +66,13 @@
 	console.log('Bad students: ');
 	if (badStudents.length === 0) console.log('Таких нет');
 	
+<<<<<<< HEAD
 	badStudents.forEach( (student) => {
 		console.log('\tFio: '+ student.FIO + '; Grade: '+ student.grade);
+=======
+	badStudents.forEach( (znachenie) => {
+		console.log('\tFio: '+ znachenie.FIO + '; Grade: '+ znachenie.grade);
+>>>>>>> 53f305ef0f03d61bb5e3e3cf578a2e594f90feee
 	});
 </script>
 </body>
