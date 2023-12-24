@@ -21,7 +21,7 @@ def main():
     data = {'clients':data_clients['clients'], 'payments':data_payments['payments']}
 
     date = datetime.date.today().strftime('%Y_%m_%d')
-    output_file = f'my_payments_analytics_{date}.xlsx'
+    output_file = f'../my_payments_analytics_{date}.xlsx'
 
     writer = Writer(data)
     writer.write_excel(output_file)
