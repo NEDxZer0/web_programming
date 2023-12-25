@@ -22,7 +22,7 @@ def main():
     os.chdir('..')
     output_file = f'my_payments_analytics_{date}.xlsx'
 
-    writer = Writer(data)
+    writer = Writer(data)   
     writer.write_excel(output_file)
 
 if __name__ == '__main__':

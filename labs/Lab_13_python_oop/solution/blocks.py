@@ -4,9 +4,9 @@ from base import BaseBlock
 
 
 class ParametrsBlock(BaseBlock):
-    NAME = 'Аналитика платежей'
-    DATE = 'Дата анализа'
-    PERIOD = 'Период выгрузки'
+    NAME = 'ПАРАМЕТРЫ ЗАПРОСА'
+    DATE = 'Дата выгрузки'
+    PERIOD = 'Период, за который сделана выгрузка'
 
     def wr_header(self):
         self.ws.write(self.row,self.col,self.NAME)
@@ -14,11 +14,9 @@ class ParametrsBlock(BaseBlock):
     def wr_data(self):
         self.row+=1
         self.ws.write(self.row,self.col,self.DATE)
-
         self.col+=1
         date = datetime.now().strftime('%d.%m.%Y') 
         self.ws.write(self.row,self.col,date)
-
         self.col-=1
         self.row+=1
         self.ws.write(self.row,self.col,self.PERIOD)
@@ -37,16 +35,16 @@ class ParametrsBlock(BaseBlock):
 
 
 class PayersBlock(BaseBlock):
-    #NAME = 'Активность клие'
+    NAME = 'ОТЧЕТ ПО АКТИВНОСТИ КЛИЕНТОВ'
     TOP = 'Топ 10 клиентов'
-    
+
     def wr_header(self):
-        self.row=4
+        self.row=5
         self.col=0
-        #self.ws.write(self.row,self.col,self.NAME)
-        #self.row+=1
-        self.ws.merge_range('A5:F5',self.TOP)
+        self.ws.write(self.row,self.col,self.NAME)
         self.row+=1
+        self.ws.write(self.row,self.col,self.TOP)
+        self.col+=1
 
     def wr_data(self):
         clients_payments = []
@@ -81,18 +79,18 @@ class PayersBlock(BaseBlock):
                 
 
 class GeographyBlock(BaseBlock):
-    #NAME = 'ГЕОГРАФИЯ КЛИЕНТОВ'
+    NAME = 'ГЕОГРАФИЯ КЛИЕНТОВ'
     STATISTIC = 'Статистика распределения клиентов'
     CITY = 'Города'
     AMOUNT = 'Kоличество клиентов'
 
     def wr_header(self):
         self.col=0
-        self.row=18
-        #self.ws.write(self.row,self.col,self.NAME)
-        #self.row+=1
-        self.ws.merge_range('A19:C19',self.STATISTIC)
+        self.row=19
+        self.ws.write(self.row,self.col,self.NAME)
         self.row+=1
+        self.ws.write(self.row,self.col,self.STATISTIC)
+        self.col+=1
         self.ws.write(self.row,self.col,self.CITY)
         self.col+=1
         self.ws.write(self.row,self.col,self.AMOUNT)
@@ -113,13 +111,13 @@ class GeographyBlock(BaseBlock):
         for city, count in sort_cities[:10]:
             self.ws.write(self.row,self.col,city)
             self.col+=1
-            self.ws.write(self.row,self.col,count)#на 30й строке
+            self.ws.write(self.row,self.col,count)
             self.col-=1
             self.row+=1
 
 
 class StatusBlock(BaseBlock):
-    #NAME = 'АНАЛИЗ СОСТОЯНИЯ СЧЕТА'
+    NAME = 'АНАЛИЗ СОСТОЯНИЯ СЧЕТА'
     STATISTIC = 'Статистика состояния счета'
     CLIENT = 'Клиент'
     STATE = 'Состояние счета'
@@ -128,12 +126,13 @@ class StatusBlock(BaseBlock):
 
     def wr_header(self):
         self.col=0
-        self.row=32
-        #self.ws.write(self.row,self.col,self.NAME)
-        self.ws.merge_range('A33:D33',self.STATISTIC)
-        self.ws.merge_range('A35:B35',self.DEBT)
-        self.ws.merge_range('C35:D35',self.PROFIT)
-        self.row+=1
+        self.row=33
+        self.ws.write(self.row,self.col,self.NAME)
+        self.ws.merge_range('A35:A36',self.STATISTIC)
+        self.ws.merge_range('B35:C35',self.DEBT)
+        self.ws.merge_range('E35:D35',self.PROFIT)
+        self.col+=1
+        self.row+=2
         self.ws.write(self.row,self.col,self.CLIENT)
         self.col+=1
         self.ws.write(self.row,self.col,self.STATE)
@@ -143,8 +142,8 @@ class StatusBlock(BaseBlock):
         self.ws.write(self.row,self.col,self.STATE)
     
     def wr_data(self):
-        self.col=0
-        self.row=35
+        self.col=1
+        self.row=36
 
         status = []
         for client in self.data['clients']:
@@ -164,8 +163,8 @@ class StatusBlock(BaseBlock):
             self.col-=1
             self.row+=1
         
-        self.col=2
-        self.row=35
+        self.col=3
+        self.row=36
 
         for s in status[:10]:
             self.ws.write(self.row,self.col,s['fio'])

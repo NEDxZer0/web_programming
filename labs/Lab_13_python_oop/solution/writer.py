@@ -15,6 +15,7 @@ class Writer:
     def write_excel(self, output_file):
         workbook = xlsxwriter.Workbook(output_file)
         worksheet = workbook.add_worksheet()
+        worksheet.set_column("A:G", 36)
 
         row = 0
         col = 0
